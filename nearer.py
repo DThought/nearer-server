@@ -54,8 +54,6 @@ class NearerThread(threading.Thread):
                             self._write('playurl ' + self._playlist[0].uri)
                             self._next = time.time();
                             self._next += int(self._playlist[0].length)
-                        else:
-                            self._nplaying = False
             except queue.Empty as e:
                 continue
 
