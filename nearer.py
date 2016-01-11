@@ -79,6 +79,7 @@ class NearerThread(threading.Thread):
 
     def _nappend(self, data):
         self._playlist.append(data)
+        self._nplay()
 
     def _nremove(self, data):
         dirty = True
@@ -104,7 +105,6 @@ except FileNotFoundError:
     pass
 
 sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-print('starting up on %s' % srv, file=sys.stderr)
 sock.bind(srv)
 os.chmod(srv, 0o777)
 sock.listen(1)
