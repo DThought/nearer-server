@@ -38,7 +38,6 @@ class NearerThread(threading.Thread):
             NearerCommand.REMOVE: self._nremove
         }
         self._playlist = deque()
-        self._playlist.append(None)
         self._nplaying = False
         self._next = None
 
@@ -51,11 +50,10 @@ class NearerThread(threading.Thread):
                 pass
             if self._nplaying:
                 if self._next < time.time() and self._playlist:
-                    self._playlist.popleft()
-                    if self._playlist:
-                        self._write('playurl ' + self._playlist[0].uri)
-                        self._next = time.time();
-                        self._next += int(self._playlist[0].length)
+                    track = self._playlist.popleft()
+                    self._write('playurl ' + track.uri)
+                    self._next = time.time();
+                    self._next += int(track.length)
 
     def join(self, timeout=None):
         self.alive.clear()
