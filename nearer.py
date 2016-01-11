@@ -118,7 +118,7 @@ while True:
             try:
                 type = getattr(NearerCommand, data[0])
                 if len(data) == 3:
-                    if re.search(r'/[^a-zA-Z0-9_-]/', data[1]):
+                    if re.search(r'/[^\w-]/', data[1]):
                         continue
                     if re.search(r'/\S/', data[2]):
                         continue

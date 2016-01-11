@@ -1,0 +1,9 @@
+[Unit]
+Description=Playlist service for Nearer media server
+
+[Service]
+ExecStart=/usr/bin/python /srv/python/nearer/nearer.py .nearer /srv/ftp/nearer
+WorkingDirectory=/srv/python/nearer
+
+[Install]
+WantedBy=multi-user.target
