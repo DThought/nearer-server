@@ -79,7 +79,7 @@ class NearerThread(threading.Thread):
 
     def _nappend(self, data):
         self._playlist.append(data)
-        self._nplay()
+        self._nplay(data)
 
     def _nremove(self, data):
         dirty = True
