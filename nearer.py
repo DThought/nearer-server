@@ -55,7 +55,7 @@ class NearerThread(threading.Thread):
                     self._next = time.time();
                     self._next += int(track.length)
                 else:
-                    self._stop(None)
+                    self._nstop(None)
 
     def join(self, timeout=None):
         self.alive.clear()
