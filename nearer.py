@@ -48,12 +48,14 @@ class NearerThread(threading.Thread):
                 self._handlers[cmd.type](cmd.data)
             except queue.Empty as e:
                 pass
-            if self._nplaying:
-                if self._next < time.time() and self._playlist:
+            if self._nplaying and self._next < time.time():
+                if self._playlist:
                     track = self._playlist.popleft()
                     self._write('playurl ' + track.uri)
                     self._next = time.time();
                     self._next += int(track.length)
+                else:
+                    self._stop(None)
 
     def join(self, timeout=None):
         self.alive.clear()
