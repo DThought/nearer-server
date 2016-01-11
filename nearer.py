@@ -106,6 +106,7 @@ except FileNotFoundError:
 sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
 print('starting up on %s' % srv, file=sys.stderr)
 sock.bind(srv)
+os.chmod(srv, 0o777)
 sock.listen(1)
 thread = NearerThread(out)
 thread.start()
