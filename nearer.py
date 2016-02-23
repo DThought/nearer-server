@@ -53,7 +53,7 @@ class NearerThread(threading.Thread):
                     track = self._playlist.popleft()
                     self._write('playurl ' + track.uri)
                     self._next = time.time();
-                    self._next += int(track.length)
+                    self._next += int(track.length) + 5
                 else:
                     self._nstop(None)
 
