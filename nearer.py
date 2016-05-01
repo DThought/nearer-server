@@ -51,7 +51,7 @@ class NearerThread(threading.Thread):
             if self._nplaying and self._next < time.time():
                 if self._playlist:
                     track = self._playlist.popleft()
-                    self._write('playurl ' + track.uri)
+                    self._write('playurl http://www.youtube.com/watch?v=' + track.uri)
                     self._next = time.time();
                     self._next += int(track.length) + 10
                 else:
