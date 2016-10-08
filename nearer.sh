@@ -8,9 +8,9 @@ do
 	if [ "$OLD" != "$NEW" ]
 	then
 		OLD=$NEW
-		killall mpv
-		killall mpsyt
-		eval mpsyt $NEW &
+		killall -9 mpsyt
+		sleep 1
+		mpsyt $NEW &
 	fi
 
 	sleep 10
